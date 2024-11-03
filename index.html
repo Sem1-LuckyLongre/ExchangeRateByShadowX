@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Calculator || ShadowX</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader" class="dotted-loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>        
+    </div>
+    <div class="failed">
+        <p></p>
+    </div>
+    <div id="mainDiv" class="calculator-container">
+        <h1>Currency Converter</h1>
+        <form id="currency-form">
+            <div class="input-group">
+                <label for="amount">Amount:</label>
+                <input type="number" value="100" id="amount" placeholder="Enter amount" required>
+            </div>
+            <div class="input-group">
+                <div class="txt">
+                    <p>From</p>
+                </div>
+                <img src="https://flagcdn.com/w20/us.png" id="from-flag" alt="Flag">
+                <select id="from"></select>
+            </div>
+            <div class="Icon">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            </div>
+            <div class="input-group">
+                <div class="txt">
+                    <p>To</p>
+                </div>
+                <img src="https://flagcdn.com/w20/in.png" id="to-flag" alt="Flag">
+                <select id="to"></select>
+            </div>
+            <button type="submit">Convert</button>
+        </form>
+        <div class="result" id="result">
+            <p>Converted Amount: <span id="converted-amount"></span></p>
+        </div>        
+       
+    </div>
+    <script src="https://kit.fontawesome.com/22cfd4c9fb.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

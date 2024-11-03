@@ -1,0 +1,158 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;            
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap:2rem;
+        }
+         /* Loader container */
+.dotted-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* Dots */
+.dot {
+    width: 4vw; /* Relative to viewport width for responsiveness */
+    height: 4vw; /* Relative to viewport width for responsiveness */
+    margin: 0 2vw; /* Spacing between dots using viewport width */
+    border-radius: 50%;
+    background-color: #0078D4; /* Microsoft blue or any other preferred color */
+    animation: bounce 0.6s infinite alternate;
+}
+
+/* Each dot has a different animation delay to create the sequence effect */
+.dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Keyframes for the bouncing effect */
+@keyframes bounce {
+    to {
+        transform: translateY(-2.5vw); /* Move dots up based on viewport width */
+        opacity: 0.7; /* Slightly transparent at the peak */
+    }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .dot {
+        width: 6vw; /* Increase the size of the dots on small screens */
+        height: 6vw;
+        margin: 0 1.5vw;
+    }
+
+    @keyframes bounce {
+        to {
+            transform: translateY(-3vw); /* Adjust bounce height for smaller screens */
+        }
+    }
+}
+
+        .calculator-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            display: none;          
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 20px;
+            margin-right:10px;
+        }
+
+        .input-group img {
+            width: 30px;
+            height: 20px;
+            margin-right: 10px;
+            border: 0.5px solid black;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #converted-amount {
+            font-weight: bold;
+        }
+        .txt{
+            padding: 0 10px 0 0;
+        }
+        .Icon{
+            margin: 5px;
+        }
+        i{
+            font-size: 25px;
+        }
+        .failed{
+            display: flex;
+            width: auto;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .failed p{
+            font: 20px black;
+            
+        }
