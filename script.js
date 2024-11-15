@@ -11,6 +11,7 @@ MainDiv.style.display = "none";
 
 const ApiKey = "380763457b644cad8179208ac58b915b";  // Your Currency Freaks API key
 const currenciesURL = `https://api.currencyfreaks.com/v2.0/currencies?apikey=${ApiKey}`;
+
 fetch(currenciesURL)
     .then(response => response.json())
     .then(data => {
@@ -21,7 +22,7 @@ fetch(currenciesURL)
         for (let Code in currencies) {
             dropdowns.forEach(select => {
                 let newOpt = document.createElement("option");
-                newOpt.innerText = `${Code} - ${currencies[Code]}`;  // Shows code and country name
+                newOpt.innerText = `${Code} - ${currencies[Code].name}`;  // Shows code and country name
                 newOpt.value = Code;
                 // Default selection for 'from' and 'to'
                 if (select.id === "from" && Code === "USD") {
@@ -75,14 +76,10 @@ const UpdateValue = () => {
         .then(response => response.json())
         .then(data => {
             let ConvertedVal = data.result;            
-            ShowMgs.innerText = ConvertedVal;            
+            ShowMgs.innerText = `Converted Amount: ${ConvertedVal} ${toCurr.value}`;            
         })
         .catch(error => {
             console.error("Error fetching conversion rate:", error);            
             Failed.innerHTML = `<p> Please Check Your Internet Connection! </p> <p> Or </p> <p> ${error} </p>`                        
         });
 }
-
-document.addEventListener('load', () => {
-    UpdateValue();
-});
