@@ -7,15 +7,15 @@ const MainDiv = document.querySelector('#mainDiv');
 const ShowMgs = document.querySelector("#converted-amount");
 const Failed = document.querySelector(".failed");
 
-MainDiv.style.display = "none"
+MainDiv.style.display = "none";
 
-const ApiKey = "5defe6a776-47d2167aca-smdpkf";  // Your Fast Forex API key
-const currenciesURL = `https://api.fastforex.io/currencies?api_key=${ApiKey}`;
+const ApiKey = "380763457b644cad8179208ac58b915b";  // Your Currency Freaks API key
+const currenciesURL = `https://api.currencyfreaks.com/v2.0/currencies?apikey=${ApiKey}`;
 fetch(currenciesURL)
     .then(response => response.json())
     .then(data => {
         Loader.style.display = "none";
-        MainDiv.style.display = "block"
+        MainDiv.style.display = "block";
         const currencies = data.currencies;                
         // Populate dropdowns with fetched currencies
         for (let Code in currencies) {
@@ -57,9 +57,10 @@ function UpdateFlag(element) {
 ConvertBtn.addEventListener('click', (e) => {
     e.preventDefault();
     // Fetch conversion rate
-    UpdateValue()
+    UpdateValue();
 });
-const UpdateValue = ()=>{
+
+const UpdateValue = () => {
     let Amount = document.querySelector("input");
     let AmountVal = Amount.value;
     if (AmountVal === "" || AmountVal < 1) {
@@ -67,20 +68,21 @@ const UpdateValue = ()=>{
         Amount.value = 100;
     }
 
-    const BASE_URL = "https://api.fastforex.io/fetch-one?from=";
-    const URL = `${BASE_URL}${fromCurr.value}&to=${toCurr.value}&api_key=${ApiKey}`;
+    const BASE_URL = "https://api.currencyfreaks.com/v2.0/convert";
+    const URL = `${BASE_URL}?apikey=${ApiKey}&from=${fromCurr.value}&to=${toCurr.value}&amount=${AmountVal}`;
     console.log(URL);
     fetch(URL)
         .then(response => response.json())
-        .then(Rate => {
-            let ConvertedVal = AmountVal * Rate.result[toCurr.value];            
-            ShowMgs.innerText = ConvertedVal            
+        .then(data => {
+            let ConvertedVal = data.result;            
+            ShowMgs.innerText = ConvertedVal;            
         })
         .catch(error => {
             console.error("Error fetching conversion rate:", error);            
             Failed.innerHTML = `<p> Please Check Your Internet Connection! </p> <p> Or </p> <p> ${error} </p>`                        
         });
 }
-document.addEventListener('load',()=>{
-    UpdateValue()
-})
+
+document.addEventListener('load', () => {
+    UpdateValue();
+});
